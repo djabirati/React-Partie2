@@ -3,15 +3,17 @@ import {Bouton} from "../../ui/Button/Button.jsx";
 
 export function Menu() {
 
-    const [textButton, changeText] = useState('Show')
+    const [isTextVisible, changeText] = useState(false)
     function changeTextButton() {
-        changeText(textButton === 'Show' ? 'Hide' : 'Show');
+        changeText(!isTextVisible);
     }
 
     return (
         <>
-            <Bouton gereClique={changeTextButton}>{textButton}</Bouton>
-            <div className={textButton === 'Show' ? 'hidden' : 'visible'}>
+            <Bouton gereClique={changeTextButton}>
+                {isTextVisible ? 'Hide' : 'Show'}
+            </Bouton>
+            <div className={isTextVisible ? 'block mt-4 p-4 bg-gray-100 rounded shadow' : 'hidden'}>
                 <h2>Menu Secret</h2>
                 <ul>
                     <li>Nourrir le chien</li>
@@ -21,6 +23,4 @@ export function Menu() {
             </div>
         </>
     )
-
-
 }
