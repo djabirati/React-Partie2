@@ -1,7 +1,8 @@
 import {useState} from "react";
 import {Bouton} from "../../ui/Button/Button.jsx";
+import PropTypes from "prop-types";
 
-export function Menu() {
+export function Menu({children}) {
 
     const [isTextVisible, changeText] = useState(false)
     function changeTextButton() {
@@ -14,13 +15,13 @@ export function Menu() {
                 {isTextVisible ? 'Hide' : 'Show'}
             </Bouton>
             <div className={isTextVisible ? 'block mt-4 p-4 bg-gray-100 rounded shadow' : 'hidden'}>
-                <h2>Menu Secret</h2>
-                <ul>
-                    <li>Nourrir le chien</li>
-                    <li>Faire mes devoirs</li>
-                    <li> Essayer des trucs en React</li>
-                </ul>
+                <section>
+                    {children}
+                </section>
             </div>
         </>
     )
+}
+Menu.propTypes = {
+    children: PropTypes.node.isRequired,
 }
