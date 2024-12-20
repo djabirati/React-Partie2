@@ -1,9 +1,7 @@
-import PropTypes from "prop-types"
+import {useContext} from "react";
+import {UserContext} from "../../../App.jsx";
 
-export  function Lastname({ nom }) {
-    return (<p>{nom}</p>)
-}
-
-Lastname.propTypes = {
-    nom: PropTypes.string.isRequired,
+export  function Lastname() {
+    const user = useContext(UserContext);
+    return (<p>{user.nom}</p>)
 }

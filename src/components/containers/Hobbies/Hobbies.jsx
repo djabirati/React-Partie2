@@ -1,10 +1,12 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import {useContext, useState} from "react";
 import { Bouton } from "../../ui/Button/Button.jsx";
+import {UserContext} from "../../../App.jsx";
 
-export function Hobbies({ hobbies }) {
+export function Hobbies() {
+    const user = useContext(UserContext);
     const [hobbiesInput, setHobbiesInput] = useState('');
-    const [hobbiesList, setHobbiesList] = useState(hobbies);
+    const [hobbiesList, setHobbiesList] = useState(user.hobbies);
     const [hobbiesError, setHobbiesError] = useState('');
 
     function handleHobbies(e) {
